@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
+import Stack from '@mui/material/Stack';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone';
+
 export const Form = ({ onSubmit, addFormNumber, typeNumber }) => {
   const [number, setNumber] = useState('');
 
@@ -18,19 +23,21 @@ export const Form = ({ onSubmit, addFormNumber, typeNumber }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>
-        <input
+      <Stack spacing={2} sx={{ width: 300 }}>
+        <TextField
           value={number}
           onChange={handleNumberChange}
           type="text"
           name="number"
           pattern="[0-9]{14}"
-          title="Введіть 14-значний номер посилки без пробілів"
           placeholder="Номер посилки"
-          required
+          label="Введіть 14-значний номер посилки"
+          variant="standard"
         />
-      </label>
-      <button type="submit">Пошук</button>
+      </Stack>
+      <Button type="submit" variant="contained" endIcon={<SearchTwoToneIcon />}>
+        Пошук
+      </Button>
     </form>
   );
 };

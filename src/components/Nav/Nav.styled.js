@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const Link = styled(NavLink)`
-  color: grey;
+  color: black;
   font-size: 30px;
   border: 1px solid;
   border-radius: 5px;
@@ -17,7 +17,7 @@ export const Link = styled(NavLink)`
 `;
 export const Nav = styled.nav`
   text-align: center;
-  background-color: teal;
+  background-color: #1976d2;
   padding: 20px;
 `;
 export const List = styled.ul`
