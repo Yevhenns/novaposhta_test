@@ -1,14 +1,22 @@
 import React from 'react';
 
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
+
 export const HistoryListItem = ({ data, deleteItem, addInfo }) => {
   return (
     <li>
-      <button type="button" onClick={() => addInfo(data)}>
+      <Button onClick={() => addInfo(data)} variant="text">
         {data}
-      </button>
-      <button type="button" onClick={() => deleteItem(data)}>
-        X
-      </button>
+      </Button>
+      <IconButton
+        onClick={() => deleteItem(data)}
+        aria-label="delete"
+        color="error"
+      >
+        <DeleteIcon />
+      </IconButton>
     </li>
   );
 };

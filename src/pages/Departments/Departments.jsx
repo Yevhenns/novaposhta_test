@@ -6,8 +6,9 @@ import { getDepartments } from '../../components/services/API';
 export const Departments = () => {
   const [departments, setDepartments] = useState([]);
 
+  getDepartments();
+
   const handlerSabmit = () => {
-    getDepartments();
     setDepartments();
   };
   return (
