@@ -11,9 +11,12 @@ export const Departments = () => {
       if (data) {
         const departmentsList = data.map(item => item.Description);
         setDepartments(departmentsList);
+      } else {
+        alert('Відділення не знайдене');
       }
     });
   };
+
   return (
     <>
       <h1>Список відділень</h1>

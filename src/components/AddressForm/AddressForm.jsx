@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
 
+import Stack from '@mui/material/Stack';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone';
+
 export const AddressForm = ({ onSubmit }) => {
   const [city, setCity] = useState('');
 
@@ -10,23 +15,26 @@ export const AddressForm = ({ onSubmit }) => {
   const handlerSubmit = e => {
     e.preventDefault();
     onSubmit(city);
+    setCity('');
   };
 
   return (
     <form onSubmit={handlerSubmit}>
-      <label>
-        <input
+      <Stack spacing={2} sx={{ width: 300 }}>
+        <TextField
           value={city}
           onChange={handleCityChange}
           type="text"
           name="city"
-          // pattern="^[а-яА-Я]+(([' -][а-яА-Я ])?[а-яА-Я]*)*$"
-          title="Введіть назву міста"
-          placeholder="Місто"
-          required
+          pattern="[A-Za-zА-Яа-яґҐЁёІіЇїЄє'’ʼ\s-]"
+          placeholder="Номер посилки"
+          label="Введіть назву міста"
+          variant="standard"
         />
-      </label>
-      <button type="submit">Пошук відділень</button>
+      </Stack>
+      <Button type="submit" variant="contained" endIcon={<SearchTwoToneIcon />}>
+        Пошук відділень
+      </Button>
     </form>
   );
 };
