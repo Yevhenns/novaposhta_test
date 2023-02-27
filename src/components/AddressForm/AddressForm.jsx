@@ -20,7 +20,7 @@ export const AddressForm = ({ onSubmit }) => {
           onChange={handleCityChange}
           type="text"
           name="city"
-          pattern="^[а-яА-Я]+(([' -][а-яА-Я ])?[а-яА-Я]*)*$"
+          // pattern="^[а-яА-Я]+(([' -][а-яА-Я ])?[а-яА-Я]*)*$"
           title="Введіть назву міста"
           placeholder="Місто"
           required

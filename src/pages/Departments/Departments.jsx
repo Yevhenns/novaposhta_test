@@ -6,10 +6,13 @@ import { getDepartments } from '../../components/services/API';
 export const Departments = () => {
   const [departments, setDepartments] = useState([]);
 
-  getDepartments();
-
-  const handlerSabmit = () => {
-    setDepartments();
+  const handlerSabmit = city => {
+    getDepartments(city).then(data => {
+      if (data) {
+        const departmentsList = data.map(item => item.Description);
+        setDepartments(departmentsList);
+      }
+    });
   };
   return (
     <>

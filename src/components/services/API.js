@@ -38,6 +38,9 @@ export const getDepartments = async query => {
         calledMethod: 'getWarehouses',
         methodProperties: {
           CityName: query,
+          // TypeOfWarehouseRef: '9a68df70-0267-42a8-bb5c-37f427e36ee4',
+          Page: '1',
+          Limit: '20',
           Language: 'UA',
         },
       },
