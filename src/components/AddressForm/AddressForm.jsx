@@ -15,7 +15,6 @@ export const AddressForm = ({ onSubmit }) => {
   const handlerSubmit = e => {
     e.preventDefault();
     onSubmit(city);
-    setCity('');
   };
 
   return (
@@ -30,6 +29,7 @@ export const AddressForm = ({ onSubmit }) => {
           placeholder="Номер посилки"
           label="Введіть назву міста"
           variant="standard"
+          required
         />
       </Stack>
       <Button type="submit" variant="contained" endIcon={<SearchTwoToneIcon />}>

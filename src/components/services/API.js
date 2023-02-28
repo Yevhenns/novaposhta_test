@@ -7,7 +7,6 @@ export const getInfo = async number => {
   try {
     const responce = await axios({
       method: 'post',
-      url: 'https://api.novaposhta.ua/v2.0/json/',
       data: {
         apiKey: API_KEY,
         modelName: 'TrackingDocument',
@@ -27,20 +26,18 @@ export const getInfo = async number => {
   }
 };
 
-export const getDepartments = async query => {
+export const getDepartments = async (query, page, limit) => {
   try {
     const responce = await axios({
       method: 'post',
-      url: 'https://api.novaposhta.ua/v2.0/json/',
       data: {
         apiKey: API_KEY,
         modelName: 'Address',
         calledMethod: 'getWarehouses',
         methodProperties: {
           CityName: query,
-          // TypeOfWarehouseRef: '9a68df70-0267-42a8-bb5c-37f427e36ee4',
-          Page: '1',
-          Limit: '20',
+          Page: page,
+          Limit: limit,
           Language: 'UA',
         },
       },
