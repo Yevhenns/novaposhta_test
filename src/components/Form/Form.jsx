@@ -22,9 +22,9 @@ export const Form = ({ onSubmit, addFormNumber, typeNumber }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Stack spacing={2} sx={{ width: 300 }}>
-        <TextField
+    <form onSubmit={handleSubmit} style={{marginBottom: "10px"}}>
+      <Stack spacing={2} sx={{ width: 300, mx: 'auto' }} marginBottom={5}>
+        <TextField        
           value={number}
           onChange={handleNumberChange}
           type="text"
@@ -35,7 +35,7 @@ export const Form = ({ onSubmit, addFormNumber, typeNumber }) => {
           variant="standard"
         />
       </Stack>
-      <Button type="submit" variant="contained" endIcon={<SearchTwoToneIcon />}>
+      <Button type="submit" variant="contained" endIcon={<SearchTwoToneIcon />} sx={{ display: 'flex', mx: 'auto' }}>
         Пошук
       </Button>
     </form>

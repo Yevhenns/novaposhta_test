@@ -3,6 +3,10 @@ import { getInfo } from '../../components/services/API';
 import { Form } from '../../components/Form/Form';
 import { Info } from '../../components/Info/Info';
 import { HistoryList } from '../../components/HistoryList/HistoryList';
+import { Container } from '@mui/material';
+
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 export const Home = () => {
   const [searchParcel, setSearchParcel] = useState(() => {
@@ -35,13 +39,13 @@ export const Home = () => {
         const addedNumber = searchParcel.some(
           item => item.number.trim() === number.trim()
         );
-        addedNumber
-          ? alert(`${number} вже у списку`)
+        addedNumber       
+          ? toast.warn(`Посилка ${number} вже у списку!`)
           : setSearchParcel([newInfoObj, ...searchParcel]);
         setTypeNumber(number);
         setAddFormNumber(false);
       } else {
-        alert('Посилка не знайдена');
+        toast.error(`Невірний номер посилки!`);
       }
     });
   };
@@ -55,7 +59,7 @@ export const Home = () => {
     setAddFormNumber(true);
   };
   return (
-    <>
+    <Container maxWidth="sm">
       <h1>Мої посилки</h1>
       <Form
         onSubmit={handlerSabmit}
@@ -68,6 +72,7 @@ export const Home = () => {
         deleteItem={deleteItem}
         addInfo={addInfo}
       />
-    </>
+      <ToastContainer />
+    </Container>
   );
 };

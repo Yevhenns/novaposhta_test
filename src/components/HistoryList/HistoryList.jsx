@@ -1,9 +1,13 @@
 import React from 'react';
 import { HistoryListItem } from './HistoryListItem';
 
+import Box from '@mui/material/Box';
+import List from '@mui/material/List';
+
 export const HistoryList = ({ data, deleteItem, addInfo }) => {
   return (
-    <ul>
+<Box>
+    <List>
       {data.map(item => {
         return (
           <HistoryListItem
@@ -14,6 +18,7 @@ export const HistoryList = ({ data, deleteItem, addInfo }) => {
           />
         );
       })}
-    </ul>
+    </List >
+    </Box>
   );
 };
