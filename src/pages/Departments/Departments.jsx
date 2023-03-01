@@ -51,7 +51,7 @@ export const Departments = () => {
       <h1>Список відділень</h1>
       <AddressForm onSubmit={handlerSabmit} cities={cities}/>
       <DepartmentList departments={currentDepartment} loading={loading} />
-      <PaginationComponent departments={departments.length} perPage={perPage} paginate={paginate}/>
+      <PaginationComponent departments={departments.length} perPage={perPage} paginate={paginate} currentPage={currentPage}/>
     </>
   );
 };
