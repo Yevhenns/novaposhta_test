@@ -1,6 +1,9 @@
 import * as React from 'react';
 
-export const Pagination = ({ departments, perPage, paginate }) => {
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
+
+export const PaginationComponent = ({ departments, perPage, paginate }) => {
   const pageNumbers = [];
 
   for (let i = 1; i <= Math.ceil(departments / perPage); i++) {

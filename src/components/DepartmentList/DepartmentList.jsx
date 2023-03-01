@@ -10,10 +10,10 @@ export const DepartmentList = ({ departments, loading }) => {
   return (
     <>
       <ul>
-        {departments.map((item, i) => {
+        {departments.map(item => {
           return <li key={nanoid()}>{item}</li>;
         })}
-      </ul>      
+      </ul>
     </>
   );
 };

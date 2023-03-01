@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { DepartmentList } from '../../components/DepartmentList/DepartmentList';
 import { AddressForm } from '../../components/AddressForm/AddressForm';
 import { getCitiesAll, getDepartments } from '../../components/services/API';
-import { Pagination } from '../../components/Pagination/Pagination';
+import { PaginationComponent } from '../../components/PaginationComponent/PaginationComponent';
 
 export const Departments = () => {
   const [cities, setCities] = useState([]);
@@ -51,7 +51,7 @@ export const Departments = () => {
       <h1>Список відділень</h1>
       <AddressForm onSubmit={handlerSabmit} cities={cities}/>
       <DepartmentList departments={currentDepartment} loading={loading} />
-      <Pagination departments={departments.length} perPage={perPage} paginate={paginate}/>
+      <PaginationComponent departments={departments.length} perPage={perPage} paginate={paginate}/>
     </>
   );
 };

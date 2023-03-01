@@ -22,14 +22,6 @@ export const AddressForm = ({ onSubmit, cities }) => {
   return (
     <form onSubmit={handlerSubmit}>
       <Stack spacing={2} sx={{ width: 300 }}>
-
-        <Autocomplete
-          id="free-solo-demo"
-          freeSolo
-          options={cities}
-          renderInput={(params) => <TextField {...params} label="freeSolo" />}
-        />
-
         <TextField
           value={city}
           onChange={handleCityChange}
