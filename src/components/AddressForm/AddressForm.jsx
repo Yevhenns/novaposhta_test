@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone';
 import { nanoid } from 'nanoid';
 
-export const AddressForm = ({ onSubmit, cities }) => {
+export const AddressForm = ({ onSubmit }) => {
   const [city, setCity] = useState('');
 
   const handleCityChange = e => {
