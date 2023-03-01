@@ -13,7 +13,7 @@ export const Departments = () => {
 
   useEffect(() => {
     getCitiesAll().then(data => {
-      const citiesList = data.filter(item => item.Description);
+      const citiesList = data.map(item => item.Description);
       setCities(citiesList);
     })
   }, [])
