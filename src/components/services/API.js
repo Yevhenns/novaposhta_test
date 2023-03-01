@@ -22,11 +22,11 @@ export const getInfo = async number => {
     });
     return responce.data.data[0];
   } catch (error) {
-    console.log(error);
+    console.log(error.message);
   }
 };
 
-export const getDepartments = async (query, page, limit) => {
+export const getDepartments = async query => {
   try {
     const responce = await axios({
       method: 'post',
@@ -36,14 +36,26 @@ export const getDepartments = async (query, page, limit) => {
         calledMethod: 'getWarehouses',
         methodProperties: {
           CityName: query,
-          Page: page,
-          Limit: limit,
           Language: 'UA',
         },
       },
     });
     return responce.data.data;
   } catch (error) {
-    console.log(error);
+    console.log(error.message);
   }
 };
+
+export const getCitiesAll = async() => {
+  try {const responce = await axios({
+    method: "post",
+    data:{
+      apiKey: API_KEY,
+      modelName: 'Address',
+      calledMethod: 'getCities',
+   }   
+  });
+return responce.data.data[0]} catch(error) {
+  console.log(error.message);
+}
+}
