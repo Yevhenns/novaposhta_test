@@ -1,14 +1,24 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { DepartmentList } from '../../components/DepartmentList/DepartmentList';
 import { AddressForm } from '../../components/AddressForm/AddressForm';
-import { getDepartments } from '../../components/services/API';
+import { getCitiesAll, getDepartments } from '../../components/services/API';
 import { Pagination } from '../../components/Pagination/Pagination';
 
 export const Departments = () => {
+  const [cities, setCities] = useState([]);
   const [departments, setDepartments] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState('1');
   const [perPage] = useState(10);
+
+  useEffect(() => {
+    getCitiesAll().then(data => {
+      const citiesList = data.filter(item => item.Description);
+      setCities(citiesList);
+    })
+  }, [])
+
+  console.log(cities)
 
   const handlerSabmit = city => {
     setLoading(true);
@@ -32,12 +42,16 @@ export const Departments = () => {
     lastDepartmentIndex
   );
 
+  const paginate = pageNumber => {
+    setCurrentPage(pageNumber)
+  }
+
   return (
     <>
       <h1>Список відділень</h1>
-      <AddressForm onSubmit={handlerSabmit} />
-      <DepartmentList departments={departments} loading={loading} />
-      <Pagination departments={departments} perPage={perPage} />
+      <AddressForm onSubmit={handlerSabmit} cities={cities}/>
+      <DepartmentList departments={currentDepartment} loading={loading} />
+      <Pagination departments={departments.length} perPage={perPage} paginate={paginate}/>
     </>
   );
 };

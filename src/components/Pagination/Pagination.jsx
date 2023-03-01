@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export const Pagination = ({ departments, perPage }) => {
+export const Pagination = ({ departments, perPage, paginate }) => {
   const pageNumbers = [];
 
   for (let i = 1; i <= Math.ceil(departments / perPage); i++) {
@@ -11,7 +11,7 @@ export const Pagination = ({ departments, perPage }) => {
       <ul>
         {pageNumbers.map(number => (
           <li key={number}>
-            <a href="!#">{number}</a>
+            <a href="#" onClick={() => paginate(number)}>{number}</a>
           </li>
         ))}
       </ul>

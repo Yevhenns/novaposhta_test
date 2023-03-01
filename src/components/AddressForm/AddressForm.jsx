@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 
 import Stack from '@mui/material/Stack';
+import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone';
+import { nanoid } from 'nanoid';
 
-export const AddressForm = ({ onSubmit }) => {
+export const AddressForm = ({ onSubmit, cities }) => {
   const [city, setCity] = useState('');
 
   const handleCityChange = e => {
@@ -20,13 +22,20 @@ export const AddressForm = ({ onSubmit }) => {
   return (
     <form onSubmit={handlerSubmit}>
       <Stack spacing={2} sx={{ width: 300 }}>
+
+        <Autocomplete
+          id="free-solo-demo"
+          freeSolo
+          options={cities}
+          renderInput={(params) => <TextField {...params} label="freeSolo" />}
+        />
+
         <TextField
           value={city}
           onChange={handleCityChange}
           type="text"
           name="city"
           pattern="[A-Za-zА-Яа-яґҐЁёІіЇїЄє'’ʼ\s-]"
-          placeholder="Номер посилки"
           label="Введіть назву міста"
           variant="standard"
           required
