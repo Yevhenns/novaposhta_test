@@ -7,7 +7,6 @@ export const getInfo = async number => {
   try {
     const responce = await axios({
       method: 'post',
-      url: 'https://api.novaposhta.ua/v2.0/json/',
       data: {
         apiKey: API_KEY,
         modelName: 'TrackingDocument',
@@ -23,7 +22,7 @@ export const getInfo = async number => {
     });
     return responce.data.data[0];
   } catch (error) {
-    console.log(error);
+    console.log(error.message);
   }
 };
 
@@ -31,7 +30,6 @@ export const getDepartments = async query => {
   try {
     const responce = await axios({
       method: 'post',
-      url: 'https://api.novaposhta.ua/v2.0/json/',
       data: {
         apiKey: API_KEY,
         modelName: 'Address',
@@ -44,6 +42,22 @@ export const getDepartments = async query => {
     });
     return responce.data.data;
   } catch (error) {
-    console.log(error);
+    console.log(error.message);
+  }
+};
+
+export const getCitiesAll = async () => {
+  try {
+    const responce = await axios({
+      method: "post",
+      data: {
+        apiKey: API_KEY,
+        modelName: 'Address',
+        calledMethod: 'getCities',
+      }
+    });
+    return responce.data.data;
+  } catch (error) {
+    console.log(error.message);
   }
 };
