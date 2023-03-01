@@ -5,9 +5,9 @@ import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone';
-import { nanoid } from 'nanoid';
+import Box from "@mui/material/Box";
 
-export const AddressForm = ({ onSubmit }) => {
+export const AddressForm = ({ onSubmit, cities }) => {
   const [city, setCity] = useState('');
 
   const handleCityChange = e => {
@@ -22,7 +22,22 @@ export const AddressForm = ({ onSubmit }) => {
   return (
     <form onSubmit={handlerSubmit}>
       <Stack spacing={2} sx={{ width: 300 }}>
-        <TextField
+
+      <Autocomplete
+      disablePortal
+      id="combo-box-demo"
+      options={cities}
+      getOptionLabel={(option) => option.name}
+      sx={{ width: 300 }}
+      renderOption={(props, option) => (
+        <Box component="li" {...props} key={option.id}>
+          {option.name}
+        </Box>
+      )}
+      renderInput={(params) => <TextField {...params} label="Введіть назву міста" onChange={handleCityChange}/>}
+    />
+
+        {/* <TextField
           value={city}
           onChange={handleCityChange}
           type="text"
@@ -31,7 +46,7 @@ export const AddressForm = ({ onSubmit }) => {
           label="Введіть назву міста"
           variant="standard"
           required
-        />
+        /> */}
       </Stack>
       <Button type="submit" variant="contained" endIcon={<SearchTwoToneIcon />}>
         Пошук відділень
