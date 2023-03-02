@@ -4,6 +4,8 @@ import { Form } from '../../components/Form/Form';
 import { Info } from '../../components/Info/Info';
 import { HistoryList } from '../../components/HistoryList/HistoryList';
 import { Container } from '@mui/material';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
@@ -13,6 +15,7 @@ export const Home = () => {
     return JSON.parse(window.localStorage.getItem('parcels')) ?? [];
   });
   const [info, setInfo] = useState([]);
+  const [isLoading, setIsLoading] = useState(false)
   const [inputNumber, setInputNumber] = useState([]);
   const [addFormNumber, setAddFormNumber] = useState(false);
 
@@ -27,6 +30,7 @@ export const Home = () => {
   }, [searchParcel, inputNumber]);
 
   const handlerSabmit = number => {
+    setIsLoading(true)
     getInfo(number).then(data => {
       if (data) {
         const newInfoObj = {
@@ -44,6 +48,7 @@ export const Home = () => {
           : setSearchParcel([newInfoObj, ...searchParcel]);
         setInputNumber(number);
         setAddFormNumber(false);
+        setIsLoading(false)
       } else {
         toast.error(`Невірний номер посилки!`);
       }
@@ -72,6 +77,9 @@ export const Home = () => {
         addFormNumber={addFormNumber}
         inputNumber={inputNumber}
       />
+      {isLoading && <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+      <CircularProgress />
+    </Box>}
       {info && <Info info={info} />}
       {searchParcel.length > 0 && <HistoryList
         data={searchParcel}

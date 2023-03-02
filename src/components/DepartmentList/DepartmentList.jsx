@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 
 export const DepartmentList = ({ departments, loading }) => {
   if (loading) {
-    return <Box sx={{ display: 'flex', mx: 'auto' }}>
+    return <Box sx={{ display: 'flex', justifyContent: 'center' }}>
       <CircularProgress />
     </Box>;
   }
