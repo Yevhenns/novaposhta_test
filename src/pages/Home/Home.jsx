@@ -30,28 +30,29 @@ export const Home = () => {
   }, [searchParcel, inputNumber]);
 
   const handlerSabmit = number => {
+    const addedNumber = searchParcel.some(
+      item => item.number.trim() === number.trim()
+    );
+    if(addedNumber) {
+      toast.warn(`Посилка ${number} вже у списку!`)
+      return
+    }    
     setIsLoading(true)
     getInfo(number).then(data => {
-      if (data) {
+      if (!data) {
+        toast.error(`Невірний номер посилки!`);
+        setIsLoading(false)
+      } else {
         const newInfoObj = {
           number: data.Number,
           status: data.Status,
           sender: data.WarehouseSender,
           recipient: data.WarehouseRecipient,
         };
-
-        const addedNumber = searchParcel.some(
-          item => item.number.trim() === number.trim()
-        );
-        addedNumber
-          ? toast.warn(`Посилка ${number} вже у списку!`)
-          : setSearchParcel([newInfoObj, ...searchParcel]);
+        setSearchParcel([newInfoObj, ...searchParcel]);
         setInputNumber(number);
         setAddFormNumber(false);
-        setIsLoading(false)
-      } else {
-        toast.error(`Невірний номер посилки!`);
-        setIsLoading(false)
+        setIsLoading(false);
       }
     });
   };
