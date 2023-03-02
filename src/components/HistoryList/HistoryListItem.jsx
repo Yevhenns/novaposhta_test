@@ -1,7 +1,4 @@
-import React from 'react';
-
-import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
+import { Button, IconButton } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 import ListItem from '@mui/material/ListItem';

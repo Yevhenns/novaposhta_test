@@ -3,19 +3,17 @@ import { getInfo } from '../../components/services/API';
 import { Form } from '../../components/Form/Form';
 import { Info } from '../../components/Info/Info';
 import { HistoryList } from '../../components/HistoryList/HistoryList';
-import { Container } from '@mui/material';
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
+import { Container, CircularProgress, Box } from '@mui/material';
 
 import { toast, ToastContainer } from 'react-toastify';
-import "react-toastify/dist/ReactToastify.css";
+import 'react-toastify/dist/ReactToastify.css';
 
 export const Home = () => {
   const [searchParcel, setSearchParcel] = useState(() => {
     return JSON.parse(window.localStorage.getItem('parcels')) ?? [];
   });
   const [info, setInfo] = useState([]);
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
   const [inputNumber, setInputNumber] = useState([]);
   const [addFormNumber, setAddFormNumber] = useState(false);
 
@@ -33,15 +31,15 @@ export const Home = () => {
     const addedNumber = searchParcel.some(
       item => item.number.trim() === number.trim()
     );
-    if(addedNumber) {
-      toast.warn(`Посилка ${number} вже у списку!`)
-      return
-    }    
-    setIsLoading(true)
+    if (addedNumber) {
+      toast.warn(`Посилка ${number} вже у списку!`);
+      return;
+    }
+    setIsLoading(true);
     getInfo(number).then(data => {
       if (!data) {
         toast.error(`Невірний номер посилки!`);
-        setIsLoading(false)
+        setIsLoading(false);
       } else {
         const newInfoObj = {
           number: data.Number,
@@ -69,7 +67,7 @@ export const Home = () => {
     setInputNumber(number);
     setAddFormNumber(true);
   };
-  
+
   return (
     <Container maxWidth="sm">
       <h1>Мої посилки</h1>
@@ -79,16 +77,20 @@ export const Home = () => {
         addFormNumber={addFormNumber}
         inputNumber={inputNumber}
       />
-      {isLoading && <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-      <CircularProgress />
-    </Box>}
+      {isLoading && (
+        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+          <CircularProgress />
+        </Box>
+      )}
       {info && <Info info={info} />}
-      {searchParcel.length > 0 && <HistoryList
-        data={searchParcel}
-        deleteItem={deleteItem}
-        addInfo={addInfo}
-        clearHistory={clearHistory}
-      />}
+      {searchParcel.length > 0 && (
+        <HistoryList
+          data={searchParcel}
+          deleteItem={deleteItem}
+          addInfo={addInfo}
+          clearHistory={clearHistory}
+        />
+      )}
       <ToastContainer />
     </Container>
   );

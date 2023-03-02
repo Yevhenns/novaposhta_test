@@ -1,7 +1,4 @@
-import * as React from 'react';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import Link from '@mui/material/Link';
+import { List, ListItem, Link } from '@mui/material';
 
 export const PaginationComponent = ({ departments, perPage, paginate }) => {
   const pageNumbers = [];
@@ -16,17 +13,27 @@ export const PaginationComponent = ({ departments, perPage, paginate }) => {
     border: 1,
     width: '30px',
     height: '30px',
-    textAlign: "center",
-    p: "5px",
-    display: "block",
+    textAlign: 'center',
+    p: '5px',
+    display: 'block',
   };
 
   return (
     <nav>
-      <List sx={{display: "flex"}}>
+      <List sx={{ display: 'flex' }}>
         {pageNumbers.map(number => (
-          <ListItem key={number} onClick={() => paginate(number)} sx={{p: "0", m: "5px"}}>
-            <Link href="#" underline="hover" sx={{...commonStyles, borderRadius: '10px', mx: "auto"}}>{number}</Link>           
+          <ListItem
+            key={number}
+            onClick={() => paginate(number)}
+            sx={{ p: '0', m: '5px' }}
+          >
+            <Link
+              href="#"
+              underline="hover"
+              sx={{ ...commonStyles, borderRadius: '10px', mx: 'auto' }}
+            >
+              {number}
+            </Link>
           </ListItem>
         ))}
       </List>

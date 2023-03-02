@@ -4,9 +4,8 @@ import { AddressForm } from '../../components/AddressForm/AddressForm';
 import { getDepartments } from '../../components/services/API';
 import { PaginationComponent } from '../../components/PaginationComponent/PaginationComponent';
 import { Container } from '@mui/material';
-
 import { toast, ToastContainer } from 'react-toastify';
-import "react-toastify/dist/ReactToastify.css";
+import 'react-toastify/dist/ReactToastify.css';
 
 export const Departments = () => {
   // const [cities, setCities] = useState([]);
@@ -34,7 +33,7 @@ export const Departments = () => {
         setDepartments(departmentsList);
         setLoading(false);
         setCurrentPage('1');
-        console.log(departmentsList)
+        console.log(departmentsList);
       } else {
         toast.error(`Відділення не знайдене`);
       }
@@ -54,15 +53,26 @@ export const Departments = () => {
   );
 
   const paginate = pageNumber => {
-    setCurrentPage(pageNumber)
-  }
+    setCurrentPage(pageNumber);
+  };
 
   return (
     <Container maxWidth="sm">
       <h1>Список відділень</h1>
-      <AddressForm onSubmit={handlerSabmit} addFormCity={addFormCity} inputCity={inputCity}/>
+      <AddressForm
+        onSubmit={handlerSabmit}
+        addFormCity={addFormCity}
+        inputCity={inputCity}
+      />
       <DepartmentList departments={currentDepartment} loading={loading} />
-      {!loading && <PaginationComponent departments={departments.length} perPage={perPage} paginate={paginate} currentPage={currentPage}/>}
+      {!loading && (
+        <PaginationComponent
+          departments={departments.length}
+          perPage={perPage}
+          paginate={paginate}
+          currentPage={currentPage}
+        />
+      )}
       <ToastContainer />
     </Container>
   );
