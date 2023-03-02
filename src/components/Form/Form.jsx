@@ -33,6 +33,13 @@ export const Form = ({ onSubmit, addFormNumber, inputNumber }) => {
           placeholder="Номер посилки"
           label="Введіть 14-значний номер посилки"
           variant="standard"
+          required
+        />
+        <TextField
+          error
+          id="outlined-error"
+          label="Error"
+          defaultValue="Hello World"
         />
       </Stack>
       <Button type="submit" variant="contained" endIcon={<SearchTwoToneIcon />} sx={{ display: 'flex', mx: 'auto' }}>
