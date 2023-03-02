@@ -12,8 +12,6 @@ export const Departments = () => {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage] = useState(20);
-  const [inputCity, setInputCity] = useState([]);
-  const [addFormCity, setAddFormCity] = useState(false);
 
   const handlerSabmit = city => {
     setLoading(true);
@@ -30,11 +28,6 @@ export const Departments = () => {
         setCurrentPage(1);
       }
     });
-  };
-
-  const addInfo = city => {
-    setInputCity(city);
-    setAddFormCity(true);
   };
 
   const lastDepartmentIndex = currentPage * perPage;
