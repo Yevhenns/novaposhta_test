@@ -5,12 +5,12 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone';
 
-export const Form = ({ onSubmit, addFormNumber, typeNumber }) => {
+export const Form = ({ onSubmit, addFormNumber, inputNumber }) => {
   const [number, setNumber] = useState('');
 
   useEffect(() => {
-    if (addFormNumber) setNumber(typeNumber);
-  }, [addFormNumber, typeNumber]);
+    if (addFormNumber) setNumber(inputNumber);
+  }, [addFormNumber, inputNumber]);
 
   const handleNumberChange = e => {
     setNumber(e.target.value);
@@ -33,6 +33,13 @@ export const Form = ({ onSubmit, addFormNumber, typeNumber }) => {
           placeholder="Номер посилки"
           label="Введіть 14-значний номер посилки"
           variant="standard"
+          required
+        />
+        <TextField
+          error
+          id="outlined-error"
+          label="Error"
+          defaultValue="Hello World"
         />
       </Stack>
       <Button type="submit" variant="contained" endIcon={<SearchTwoToneIcon />} sx={{ display: 'flex', mx: 'auto' }}>

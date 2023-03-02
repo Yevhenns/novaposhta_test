@@ -1,57 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Stack from '@mui/material/Stack';
-import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone';
-import Box from "@mui/material/Box";
 
-export const AddressForm = ({ onSubmit, cities }) => {
+export const AddressForm = ({ onSubmit, addFormCity, inputCity }) => {
   const [city, setCity] = useState('');
+
+  useEffect(() => {
+    if (addFormCity) setCity(inputCity);
+  }, [addFormCity, inputCity]);
 
   const handleCityChange = e => {
     setCity(e.target.value);
   };
 
-  const handlerSubmit = e => {
+  const handleSubmit = e => {
     e.preventDefault();
     onSubmit(city);
   };
 
   return (
-    <form onSubmit={handlerSubmit}>
-      <Stack spacing={2} sx={{ width: 300 }}>
-
-      <Autocomplete
-      disablePortal
-      id="combo-box-demo"
-      options={cities}
-      sx={{ width: 300 }}      
-      renderOption={(props, cities) => (
-        <Box component="li" {...props} key={cities.id}>
-          {cities.label}
-        </Box>
-      )}
-      renderInput={(params) => <TextField {...params} label="Введіть назву міста"/>}
-    />
-
-      {/* <div className="card flex justify-content-center">
-            <AutoComplete value={city} suggestions={cities} onChange={(e) => setCity(e.value)} />
-        </div> */}
-
-        {/* <TextField
+    <form onSubmit={handleSubmit} style={{marginBottom: "10px"}}>
+      <Stack spacing={2} sx={{ width: 300, display: "flex", mx: "auto" }}>
+        <TextField
           value={city}
           onChange={handleCityChange}
           type="text"
           name="city"
-          pattern="[A-Za-zА-Яа-яґҐЁёІіЇїЄє'’ʼ\s-]"
+          pattern="[А-Яа-яґҐЁёІіЇїЄє'’ʼ\s-]"
+          placeholder="Місто"
           label="Введіть назву міста"
           variant="standard"
-          required
-        /> */}
+        />
       </Stack>
-      <Button type="submit" variant="contained" endIcon={<SearchTwoToneIcon />}>
+      <Button type="submit" variant="contained" endIcon={<SearchTwoToneIcon />} sx={{display: "flex", mx: "auto", marginTop: "10px"}}>
         Пошук відділень
       </Button>
     </form>
