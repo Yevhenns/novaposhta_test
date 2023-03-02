@@ -51,6 +51,7 @@ export const Home = () => {
         setIsLoading(false)
       } else {
         toast.error(`Невірний номер посилки!`);
+        setIsLoading(false)
       }
     });
   };
