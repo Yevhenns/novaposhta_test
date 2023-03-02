@@ -1,7 +1,5 @@
-import { Button, IconButton } from '@mui/material';
+import { Button, IconButton, ListItem } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
-
-import ListItem from '@mui/material/ListItem';
 
 export const HistoryListItem = ({ data, deleteItem, addInfo }) => {
   return (

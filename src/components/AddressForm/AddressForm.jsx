@@ -26,6 +26,7 @@ export const AddressForm = ({ onSubmit }) => {
           placeholder="Місто"
           label="Введіть назву міста"
           variant="standard"
+          required
         />
       </Stack>
       <Button

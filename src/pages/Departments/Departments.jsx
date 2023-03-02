@@ -11,13 +11,13 @@ export const Departments = () => {
   const [departments, setDepartments] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [perPage] = useState(20);
+  const [perPage] = useState(15);
 
   const handlerSabmit = city => {
     setLoading(true);
     getDepartments(city).then(data => {
       console.log(data);
-      if (data.length === 0) {
+      if (data.length === 0 || city.trim() === '') {
         toast.error(`Помилка в назві міста!`);
         setLoading(false);
         setDepartments([]);

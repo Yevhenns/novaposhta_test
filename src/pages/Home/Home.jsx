@@ -4,7 +4,6 @@ import { Form } from '../../components/Form/Form';
 import { Info } from '../../components/Info/Info';
 import { HistoryList } from '../../components/HistoryList/HistoryList';
 import { Container, CircularProgress, Box } from '@mui/material';
-
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 

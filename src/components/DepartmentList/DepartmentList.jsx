@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid';
-import { CircularProgress, Box } from '@mui/material';
+import { CircularProgress, Box, List, ListItem } from '@mui/material';
 
 export const DepartmentList = ({ departments, loading }) => {
   if (loading) {
@@ -9,13 +9,14 @@ export const DepartmentList = ({ departments, loading }) => {
       </Box>
     );
   }
+
   return (
     <>
-      <ul>
+      <List sx={{ height: '400px' }}>
         {departments.map(item => {
-          return <li key={nanoid()}>{item}</li>;
+          return <ListItem key={nanoid()}>{item}</ListItem>;
         })}
-      </ul>
+      </List>
     </>
   );
 };
