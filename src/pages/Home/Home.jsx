@@ -39,7 +39,7 @@ export const Home = () => {
         const addedNumber = searchParcel.some(
           item => item.number.trim() === number.trim()
         );
-        addedNumber       
+        addedNumber
           ? toast.warn(`Посилка ${number} вже у списку!`)
           : setSearchParcel([newInfoObj, ...searchParcel]);
         setTypeNumber(number);
@@ -54,6 +54,10 @@ export const Home = () => {
     setSearchParcel(searchParcel.filter(item => item.number !== number));
   };
 
+  const clearHistory = () => {
+    setSearchParcel([]);
+  };
+
   const addInfo = number => {
     setTypeNumber(number);
     setAddFormNumber(true);
@@ -61,17 +65,19 @@ export const Home = () => {
   return (
     <Container maxWidth="sm">
       <h1>Мої посилки</h1>
+      {searchParcel.length === 0 && <p>Приклад номеру: 20400271548566</p>}
       <Form
         onSubmit={handlerSabmit}
         addFormNumber={addFormNumber}
         typeNumber={typeNumber}
       />
       {info && <Info info={info} />}
-      <HistoryList
+      {searchParcel.length > 0 && <HistoryList
         data={searchParcel}
         deleteItem={deleteItem}
         addInfo={addInfo}
-      />
+        clearHistory={clearHistory}
+      />}
       <ToastContainer />
     </Container>
   );
