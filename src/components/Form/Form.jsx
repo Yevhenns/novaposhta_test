@@ -1,8 +1,5 @@
-import React, { useEffect, useState } from 'react';
-
-import Stack from '@mui/material/Stack';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
+import { useEffect, useState } from 'react';
+import { Stack, TextField, Button } from '@mui/material';
 import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone';
 
 export const Form = ({ onSubmit, addFormNumber, inputNumber }) => {
@@ -22,9 +19,9 @@ export const Form = ({ onSubmit, addFormNumber, inputNumber }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{marginBottom: "10px"}}>
+    <form onSubmit={handleSubmit} style={{ marginBottom: '10px' }}>
       <Stack spacing={2} sx={{ width: 300, mx: 'auto' }} marginBottom={5}>
-        <TextField        
+        <TextField
           value={number}
           onChange={handleNumberChange}
           type="text"
@@ -35,14 +32,13 @@ export const Form = ({ onSubmit, addFormNumber, inputNumber }) => {
           variant="standard"
           required
         />
-        <TextField
-          error
-          id="outlined-error"
-          label="Error"
-          defaultValue="Hello World"
-        />
       </Stack>
-      <Button type="submit" variant="contained" endIcon={<SearchTwoToneIcon />} sx={{ display: 'flex', mx: 'auto' }}>
+      <Button
+        type="submit"
+        variant="contained"
+        endIcon={<SearchTwoToneIcon />}
+        sx={{ display: 'flex', mx: 'auto' }}
+      >
         Пошук
       </Button>
     </form>

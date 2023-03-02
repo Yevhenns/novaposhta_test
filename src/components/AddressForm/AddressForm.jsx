@@ -1,16 +1,9 @@
-import React, { useState, useEffect } from 'react';
-
-import Stack from '@mui/material/Stack';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
+import { useState } from 'react';
+import { Stack, TextField, Button } from '@mui/material';
 import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone';
 
-export const AddressForm = ({ onSubmit, addFormCity, inputCity }) => {
+export const AddressForm = ({ onSubmit }) => {
   const [city, setCity] = useState('');
-
-  useEffect(() => {
-    if (addFormCity) setCity(inputCity);
-  }, [addFormCity, inputCity]);
 
   const handleCityChange = e => {
     setCity(e.target.value);
@@ -22,8 +15,8 @@ export const AddressForm = ({ onSubmit, addFormCity, inputCity }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{marginBottom: "10px"}}>
-      <Stack spacing={2} sx={{ width: 300, display: "flex", mx: "auto" }}>
+    <form onSubmit={handleSubmit} style={{ marginBottom: '10px' }}>
+      <Stack spacing={2} sx={{ width: 300, display: 'flex', mx: 'auto' }}>
         <TextField
           value={city}
           onChange={handleCityChange}
@@ -33,9 +26,15 @@ export const AddressForm = ({ onSubmit, addFormCity, inputCity }) => {
           placeholder="Місто"
           label="Введіть назву міста"
           variant="standard"
+          required
         />
       </Stack>
-      <Button type="submit" variant="contained" endIcon={<SearchTwoToneIcon />} sx={{display: "flex", mx: "auto", marginTop: "10px"}}>
+      <Button
+        type="submit"
+        variant="contained"
+        endIcon={<SearchTwoToneIcon />}
+        sx={{ display: 'flex', mx: 'auto', marginTop: '10px' }}
+      >
         Пошук відділень
       </Button>
     </form>

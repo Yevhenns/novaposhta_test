@@ -1,21 +1,22 @@
-import React from 'react';
 import { nanoid } from 'nanoid';
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
+import { CircularProgress, Box, List, ListItem } from '@mui/material';
 
 export const DepartmentList = ({ departments, loading }) => {
   if (loading) {
-    return <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-      <CircularProgress />
-    </Box>;
+    return (
+      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+        <CircularProgress />
+      </Box>
+    );
   }
+
   return (
     <>
-      <ul>
+      <List sx={{ height: '700px' }}>
         {departments.map(item => {
-          return <li key={nanoid()}>{item}</li>;
+          return <ListItem key={nanoid()}>{item}</ListItem>;
         })}
-      </ul>
+      </List>
     </>
   );
 };
