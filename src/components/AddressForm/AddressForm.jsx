@@ -27,15 +27,18 @@ export const AddressForm = ({ onSubmit, cities }) => {
       disablePortal
       id="combo-box-demo"
       options={cities}
-      getOptionLabel={(option) => option.name}
-      sx={{ width: 300 }}
-      renderOption={(props, option) => (
-        <Box component="li" {...props} key={option.id}>
-          {option.name}
+      sx={{ width: 300 }}      
+      renderOption={(props, cities) => (
+        <Box component="li" {...props} key={cities.id}>
+          {cities.label}
         </Box>
       )}
-      renderInput={(params) => <TextField {...params} label="Введіть назву міста" onChange={handleCityChange}/>}
+      renderInput={(params) => <TextField {...params} label="Введіть назву міста"/>}
     />
+
+      {/* <div className="card flex justify-content-center">
+            <AutoComplete value={city} suggestions={cities} onChange={(e) => setCity(e.value)} />
+        </div> */}
 
         {/* <TextField
           value={city}

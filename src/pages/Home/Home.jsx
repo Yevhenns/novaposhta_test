@@ -3,6 +3,10 @@ import { getInfo } from '../../components/services/API';
 import { Form } from '../../components/Form/Form';
 import { Info } from '../../components/Info/Info';
 import { HistoryList } from '../../components/HistoryList/HistoryList';
+import { Container } from '@mui/material';
+
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 export const Home = () => {
   const [searchParcel, setSearchParcel] = useState(() => {
@@ -36,12 +40,12 @@ export const Home = () => {
           item => item.number.trim() === number.trim()
         );
         addedNumber
-          ? alert(`${number} вже у списку`)
+          ? toast.warn(`Посилка ${number} вже у списку!`)
           : setSearchParcel([newInfoObj, ...searchParcel]);
         setTypeNumber(number);
         setAddFormNumber(false);
       } else {
-        alert('Посилка не знайдена');
+        toast.error(`Невірний номер посилки!`);
       }
     });
   };
@@ -50,24 +54,31 @@ export const Home = () => {
     setSearchParcel(searchParcel.filter(item => item.number !== number));
   };
 
+  const clearHistory = () => {
+    setSearchParcel([]);
+  };
+
   const addInfo = number => {
     setTypeNumber(number);
     setAddFormNumber(true);
   };
   return (
-    <>
+    <Container maxWidth="sm">
       <h1>Мої посилки</h1>
+      {searchParcel.length === 0 && <p>Приклад номеру: 20400271548566</p>}
       <Form
         onSubmit={handlerSabmit}
         addFormNumber={addFormNumber}
         typeNumber={typeNumber}
       />
       {info && <Info info={info} />}
-      <HistoryList
+      {searchParcel.length > 0 && <HistoryList
         data={searchParcel}
         deleteItem={deleteItem}
         addInfo={addInfo}
-      />
-    </>
+        clearHistory={clearHistory}
+      />}
+      <ToastContainer />
+    </Container>
   );
 };

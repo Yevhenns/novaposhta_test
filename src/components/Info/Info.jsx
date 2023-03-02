@@ -1,23 +1,26 @@
 import React from 'react';
 
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+
 export const Info = ({ info }) => {
   return (
-    <ul>
+    <List>
       {!info.status ? (
-        <li>Статус: Інформація відсутня</li>
+        <ListItem>Статус: Інформація відсутня</ListItem>
       ) : (
-        <li>Статус: {info.status}</li>
+        <ListItem>Статус: {info.status}</ListItem>
       )}
       {!info.sender ? (
-        <li>Відправив: Інформація відсутня</li>
+        <ListItem>Відправив: Інформація відсутня</ListItem>
       ) : (
-        <li>Відправив: {info.sender}</li>
+        <ListItem>Відправив: {info.sender}</ListItem>
       )}
       {!info.recipient ? (
-        <li>Отримав: Інформація відсутня</li>
+        <ListItem>Отримав: Інформація відсутня</ListItem>
       ) : (
-        <li>Отримав: {info.recipient}</li>
+        <ListItem>Отримав: {info.recipient}</ListItem>
       )}
-    </ul>
+    </List>
   );
 };

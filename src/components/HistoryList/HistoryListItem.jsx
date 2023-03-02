@@ -4,9 +4,11 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 
+import ListItem from '@mui/material/ListItem';
+
 export const HistoryListItem = ({ data, deleteItem, addInfo }) => {
   return (
-    <li>
+    <ListItem sx={{ justifyContent: 'center' }}>
       <Button onClick={() => addInfo(data)} variant="text">
         {data}
       </Button>
@@ -17,6 +19,6 @@ export const HistoryListItem = ({ data, deleteItem, addInfo }) => {
       >
         <DeleteIcon />
       </IconButton>
-    </li>
+    </ListItem>
   );
 };
