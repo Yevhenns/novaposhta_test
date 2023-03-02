@@ -13,7 +13,7 @@ export const Home = () => {
     return JSON.parse(window.localStorage.getItem('parcels')) ?? [];
   });
   const [info, setInfo] = useState([]);
-  const [typeNumber, setTypeNumber] = useState([]);
+  const [inputNumber, setInputNumber] = useState([]);
   const [addFormNumber, setAddFormNumber] = useState(false);
 
   useEffect(() => {
@@ -23,8 +23,8 @@ export const Home = () => {
   }, [searchParcel]);
 
   useEffect(() => {
-    setInfo(searchParcel.find(item => item.number === typeNumber));
-  }, [searchParcel, typeNumber]);
+    setInfo(searchParcel.find(item => item.number === inputNumber));
+  }, [searchParcel, inputNumber]);
 
   const handlerSabmit = number => {
     getInfo(number).then(data => {
@@ -42,7 +42,7 @@ export const Home = () => {
         addedNumber
           ? toast.warn(`Посилка ${number} вже у списку!`)
           : setSearchParcel([newInfoObj, ...searchParcel]);
-        setTypeNumber(number);
+        setInputNumber(number);
         setAddFormNumber(false);
       } else {
         toast.error(`Невірний номер посилки!`);
@@ -59,9 +59,10 @@ export const Home = () => {
   };
 
   const addInfo = number => {
-    setTypeNumber(number);
+    setInputNumber(number);
     setAddFormNumber(true);
   };
+  
   return (
     <Container maxWidth="sm">
       <h1>Мої посилки</h1>
@@ -69,7 +70,7 @@ export const Home = () => {
       <Form
         onSubmit={handlerSabmit}
         addFormNumber={addFormNumber}
-        typeNumber={typeNumber}
+        inputNumber={inputNumber}
       />
       {info && <Info info={info} />}
       {searchParcel.length > 0 && <HistoryList

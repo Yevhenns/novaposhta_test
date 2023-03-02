@@ -1,8 +1,6 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
 
-
-
 export const DepartmentList = ({ departments, loading }) => {
   if (loading) {
     return <p>Loading</p>;

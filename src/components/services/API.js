@@ -46,18 +46,18 @@ export const getDepartments = async query => {
   }
 };
 
-export const getCitiesAll = async () => {
-  try {
-    const responce = await axios({
-      method: "post",
-      data: {
-        apiKey: API_KEY,
-        modelName: 'Address',
-        calledMethod: 'getCities',
-      }
-    });
-    return responce.data.data;
-  } catch (error) {
-    console.log(error.message);
-  }
-};
+// export const getCitiesAll = async () => {
+//   try {
+//     const responce = await axios({
+//       method: "post",
+//       data: {
+//         apiKey: API_KEY,
+//         modelName: 'Address',
+//         calledMethod: 'getCities',
+//       }
+//     });
+//     return responce.data.data;
+//   } catch (error) {
+//     console.log(error.message);
+//   }
+// };
