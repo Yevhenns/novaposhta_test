@@ -16,9 +16,11 @@ export const Departments = () => {
   const handlerSabmit = city => {
     setLoading(true);
     getDepartments(city).then(data => {
-      if (!data) {
-        toast.error(`Відділення не знайдене`);
+      console.log(data);
+      if (data.length === 0) {
+        toast.error(`Помилка в назві міста!`);
         setLoading(false);
+        setDepartments([]);
       } else {
         const departmentsList = data
           .filter(item => Number(item.Number) < 1000)
@@ -44,11 +46,7 @@ export const Departments = () => {
   return (
     <Container maxWidth="sm">
       <h1>Список відділень</h1>
-      <AddressForm
-        onSubmit={handlerSabmit}
-        addFormCity={addFormCity}
-        inputCity={inputCity}
-      />
+      <AddressForm onSubmit={handlerSabmit} />
       <DepartmentList departments={currentDepartment} loading={loading} />
       {!loading && (
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>

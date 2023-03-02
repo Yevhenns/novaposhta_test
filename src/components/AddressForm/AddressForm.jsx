@@ -1,13 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Stack, TextField, Button } from '@mui/material';
 import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone';
 
-export const AddressForm = ({ onSubmit, addFormCity, inputCity }) => {
+export const AddressForm = ({ onSubmit }) => {
   const [city, setCity] = useState('');
-
-  useEffect(() => {
-    if (addFormCity) setCity(inputCity);
-  }, [addFormCity, inputCity]);
 
   const handleCityChange = e => {
     setCity(e.target.value);
