@@ -3,6 +3,7 @@ import { DepartmentList } from '../../components/DepartmentList/DepartmentList';
 import { AddressForm } from '../../components/AddressForm/AddressForm';
 import { getCitiesAll, getDepartments } from '../../components/services/API';
 import { PaginationComponent } from '../../components/PaginationComponent/PaginationComponent';
+import { Container } from '@mui/material';
 
 export const Departments = () => {
   const [cities, setCities] = useState([]);
@@ -47,11 +48,11 @@ export const Departments = () => {
   }
 
   return (
-    <>
+    <Container maxWidth="sm">
       <h1>Список відділень</h1>
       <AddressForm onSubmit={handlerSabmit} cities={cities}/>
       <DepartmentList departments={currentDepartment} loading={loading} />
       <PaginationComponent departments={departments.length} perPage={perPage} paginate={paginate} currentPage={currentPage}/>
-    </>
+    </Container>
   );
 };
