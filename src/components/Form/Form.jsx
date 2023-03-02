@@ -32,12 +32,6 @@ export const Form = ({ onSubmit, addFormNumber, inputNumber }) => {
           variant="standard"
           required
         />
-        <TextField
-          error
-          id="outlined-error"
-          label="Error"
-          defaultValue="Hello World"
-        />
       </Stack>
       <Button
         type="submit"
