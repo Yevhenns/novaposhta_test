@@ -12,7 +12,7 @@ export const DepartmentList = ({ departments, loading }) => {
 
   return (
     <>
-      <List sx={{ height: '400px' }}>
+      <List sx={{ height: '700px' }}>
         {departments.map(item => {
           return <ListItem key={nanoid()}>{item}</ListItem>;
         })}

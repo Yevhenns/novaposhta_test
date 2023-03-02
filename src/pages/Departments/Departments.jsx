@@ -15,9 +15,14 @@ export const Departments = () => {
 
   const handlerSabmit = city => {
     setLoading(true);
-    getDepartments(city).then(data => {
-      console.log(data);
-      if (data.length === 0 || city.trim() === '') {
+    if (city.trim() === '') {
+      toast.error(`Введіть назву міста!`);
+      setLoading(false);
+      setDepartments([]);
+      return;
+    }
+    getDepartments(city.trim()).then(data => {
+      if (data.length === 0) {
         toast.error(`Помилка в назві міста!`);
         setLoading(false);
         setDepartments([]);
