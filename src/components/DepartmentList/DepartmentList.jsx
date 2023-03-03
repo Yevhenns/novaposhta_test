@@ -1,19 +1,11 @@
 import { nanoid } from 'nanoid';
-import { CircularProgress, Box, List, ListItem } from '@mui/material';
+import { List, ListItem } from '@mui/material';
 
 export const DepartmentList = ({
   currentDepartments,
   loading,
   currentCity,
 }) => {
-  if (loading) {
-    return (
-      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-        <CircularProgress />
-      </Box>
-    );
-  }
-
   const commonStyles = {
     bgcolor: 'background.paper',
     borderColor: 'text.primary',
