@@ -1,8 +1,8 @@
 {
-  "name": "novaposhta",
+  "name": "novaposhta_test",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Yevhenns.github.io/novaposhta-test/",
+  "homepage": "https://Yevhenns.github.io/novaposhta_test/",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
