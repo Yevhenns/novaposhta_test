@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Stack, TextField, Button } from '@mui/material';
 import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone';
+import PropTypes from 'prop-types';
 
 export const Form = ({ onSubmit, addFormNumber, inputNumber }) => {
   const [number, setNumber] = useState('');
@@ -43,4 +44,10 @@ export const Form = ({ onSubmit, addFormNumber, inputNumber }) => {
       </Button>
     </form>
   );
+};
+
+Form.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  addFormNumber: PropTypes.bool.isRequired,
+  inputNumber: PropTypes.string.isRequired,
 };

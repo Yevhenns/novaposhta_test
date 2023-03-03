@@ -1,11 +1,8 @@
 import { nanoid } from 'nanoid';
 import { List, ListItem } from '@mui/material';
+import PropTypes from 'prop-types';
 
-export const DepartmentList = ({
-  currentDepartments,
-  loading,
-  currentCity,
-}) => {
+export const DepartmentList = ({ currentDepartments, currentCity }) => {
   const commonStyles = {
     bgcolor: 'background.paper',
     borderColor: 'text.primary',
@@ -30,4 +27,9 @@ export const DepartmentList = ({
       </List>
     </>
   );
+};
+
+DepartmentList.propTypes = {
+  currentDepartments: PropTypes.arrayOf(PropTypes.string).isRequired,
+  currentCity: PropTypes.string.isRequired,
 };

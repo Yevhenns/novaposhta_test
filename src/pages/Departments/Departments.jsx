@@ -100,7 +100,6 @@ export const Departments = () => {
       {departments.length > 0 && (
         <DepartmentList
           currentDepartments={currentDepartments}
-          loading={loading}
           currentCity={currentCity}
         />
       )}
