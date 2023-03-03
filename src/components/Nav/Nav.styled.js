@@ -7,9 +7,6 @@ export const Link = styled(NavLink)`
   border: 1px solid;
   border-radius: 5px;
   padding: 5px;
-  &:first-child {
-    margin-right: 20px;
-  }
   &.active {
     color: white;
     box-shadow: 10px 5px 5px grey;
@@ -22,10 +19,22 @@ export const Nav = styled.nav`
   text-align: center;
   background-color: #1976d2;
   padding: 20px;
-  border-bottom-left-radius: 100px 50px;
-  border-bottom-right-radius: 100px 50px;
+  border-bottom-left-radius: 70px 50px;
+  border-bottom-right-radius: 70px 50px;
 `;
 export const List = styled.ul`
   justify-content: center;
   display: flex;
+  
+  }
+`;
+export const ListItem = styled.li`
+  &:first-child {
+    margin-right: 5px;
+  }
+  @media screen and (min-width: 768px) {
+    &:first-child {
+      margin-right: 20px;
+    }
+  }
 `;

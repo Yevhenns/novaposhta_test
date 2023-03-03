@@ -4,12 +4,12 @@ export const Nav = () => {
   return (
     <SC.Nav>
       <SC.List>
-        <li>
+        <SC.ListItem>
           <SC.Link to="/">Перевірити ТТН</SC.Link>
-        </li>
-        <li>
+        </SC.ListItem>
+        <SC.ListItem>
           <SC.Link to="/parcels">Список відділень</SC.Link>
-        </li>
+        </SC.ListItem>
       </SC.List>
     </SC.Nav>
   );

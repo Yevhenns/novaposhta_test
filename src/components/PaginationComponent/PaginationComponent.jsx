@@ -13,6 +13,8 @@ export const PaginationComponent = ({ departments, perPage, paginate }) => {
       count={pageNumbers.length}
       color="primary"
       onChange={paginate}
+      siblingCount={0}
+      boundaryCount={1}
       sx={{ textAlign: 'center' }}
     />
   );
