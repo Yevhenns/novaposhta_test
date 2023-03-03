@@ -34,11 +34,16 @@ export const Home = () => {
       toast.warn(`Посилка ${number} вже у списку!`);
       return;
     }
+    if (number.trim() === '') {
+      toast.warn(`Введіть номер посилки!`);
+      return;
+    }
     setIsLoading(true);
-    getInfo(number).then(data => {
+    getInfo(number.trim()).then(data => {
       if (!data) {
         toast.error(`Невірний номер посилки!`);
         setIsLoading(false);
+        return;
       } else {
         const newInfoObj = {
           number: data.Number,
