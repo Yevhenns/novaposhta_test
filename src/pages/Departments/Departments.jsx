@@ -14,7 +14,6 @@ export const Departments = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage] = useState(15);
 
-  console.log(departments)
   const handlerSabmit = city => {
     setLoading(true);
     const optimizedCity = city.trim().toLowerCase();
@@ -36,12 +35,13 @@ export const Departments = () => {
         return;
       } else {
         const departmentsList = data
-          .filter(item => Number(item.Number) < 1000)
+          .filter(item => item.Description.includes('Відділення №'))
           .map(item => item.Description);
         setDepartments(departmentsList);
         setLoading(false);
         setCurrentPage(1);
         setCurrentCity(optimizedCity);
+        console.log(data);
       }
     });
   };
@@ -72,7 +72,7 @@ export const Departments = () => {
           loading={loading}
           currentCity={currentCity}
         />
-      )}      
+      )}
       {!loading && (
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
           <PaginationComponent
