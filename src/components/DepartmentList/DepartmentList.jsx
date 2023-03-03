@@ -18,7 +18,12 @@ export const DepartmentList = ({ currentDepartments, currentCity }) => {
           return (
             <ListItem
               key={nanoid()}
-              sx={{ minHeight: '60px', ...commonStyles, borderRadius: '16px' }}
+              sx={{
+                minHeight: '60px',
+                ...commonStyles,
+                borderRadius: '16px',
+                marginLeft: '0',
+              }}
             >
               {item}
             </ListItem>
