@@ -1,6 +1,7 @@
 import { HistoryListItem } from './HistoryListItem';
 import { Button, Box, List } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
+import PropTypes from 'prop-types';
 
 export const HistoryList = ({ data, deleteItem, addInfo, clearHistory }) => {
   return (
@@ -29,4 +30,11 @@ export const HistoryList = ({ data, deleteItem, addInfo, clearHistory }) => {
       </Button>
     </Box>
   );
+};
+
+HistoryList.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
+  deleteItem: PropTypes.func.isRequired,
+  addInfo: PropTypes.func.isRequired,
+  clearHistory: PropTypes.func.isRequired,
 };

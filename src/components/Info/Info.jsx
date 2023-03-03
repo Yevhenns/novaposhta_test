@@ -1,4 +1,5 @@
 import { List, ListItem } from '@mui/material';
+import PropTypes from 'prop-types';
 
 export const Info = ({ info }) => {
   return (
@@ -20,4 +21,8 @@ export const Info = ({ info }) => {
       )}
     </List>
   );
+};
+
+Info.propTypes = {
+  info: PropTypes.objectOf(PropTypes.string).isRequired,
 };

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Stack, TextField, Button, Box } from '@mui/material';
 import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone';
+import PropTypes from 'prop-types';
 
 export const AddressForm = ({ onSubmit, currentButtonClick }) => {
   const [city, setCity] = useState('');
@@ -61,4 +62,9 @@ export const AddressForm = ({ onSubmit, currentButtonClick }) => {
       </Box>
     </form>
   );
+};
+
+AddressForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  currentButtonClick: PropTypes.func.isRequired,
 };

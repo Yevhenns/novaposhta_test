@@ -1,5 +1,6 @@
 import { Button, IconButton, ListItem } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
+import PropTypes from 'prop-types';
 
 export const HistoryListItem = ({ data, deleteItem, addInfo }) => {
   return (
@@ -16,4 +17,10 @@ export const HistoryListItem = ({ data, deleteItem, addInfo }) => {
       </IconButton>
     </ListItem>
   );
+};
+
+HistoryListItem.propTypes = {
+  data: PropTypes.string.isRequired,
+  deleteItem: PropTypes.func.isRequired,
+  addInfo: PropTypes.func.isRequired,
 };

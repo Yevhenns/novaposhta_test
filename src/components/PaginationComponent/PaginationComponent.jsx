@@ -1,4 +1,5 @@
 import { Pagination } from '@mui/material';
+import PropTypes from 'prop-types';
 
 export const PaginationComponent = ({ departments, perPage, paginate }) => {
   const pageNumbers = [];
@@ -15,4 +16,10 @@ export const PaginationComponent = ({ departments, perPage, paginate }) => {
       sx={{ textAlign: 'center' }}
     />
   );
+};
+
+PaginationComponent.propTypes = {
+  departments: PropTypes.number.isRequired,
+  perPage: PropTypes.number.isRequired,
+  paginate: PropTypes.func.isRequired,
 };
