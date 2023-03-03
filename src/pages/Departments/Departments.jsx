@@ -8,6 +8,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const Departments = () => {
+  const [currentCity, setCurrentCity] = useState('');
   const [departments, setDepartments] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -15,17 +16,23 @@ export const Departments = () => {
 
   const handlerSabmit = city => {
     setLoading(true);
+    const optimizedCity = city.trim().toLowerCase();
     if (city.trim() === '') {
-      toast.error(`Введіть назву міста!`);
+      toast.error(`Введіть назву населеного пункту!`);
       setLoading(false);
       setDepartments([]);
       return;
     }
-    getDepartments(city.trim()).then(data => {
+    if (optimizedCity === currentCity) {
+      setLoading(false);
+      return;
+    }
+    getDepartments(optimizedCity).then(data => {
       if (data.length === 0) {
-        toast.error(`Помилка в назві міста!`);
+        toast.error(`Невірна назва населеного пункту!`);
         setLoading(false);
         setDepartments([]);
+        return;
       } else {
         const departmentsList = data
           .filter(item => Number(item.Number) < 1000)
@@ -33,13 +40,14 @@ export const Departments = () => {
         setDepartments(departmentsList);
         setLoading(false);
         setCurrentPage(1);
+        setCurrentCity(optimizedCity);
       }
     });
   };
 
   const lastDepartmentIndex = currentPage * perPage;
   const firstDepartmentIndex = lastDepartmentIndex - perPage;
-  const currentDepartment = departments.slice(
+  const currentDepartments = departments.slice(
     firstDepartmentIndex,
     lastDepartmentIndex
   );
@@ -52,7 +60,14 @@ export const Departments = () => {
     <Container maxWidth="sm">
       <h1>Список відділень</h1>
       <AddressForm onSubmit={handlerSabmit} />
-      <DepartmentList departments={currentDepartment} loading={loading} />
+      {departments.length > 0 && (
+        <DepartmentList
+          currentDepartments={currentDepartments}
+          loading={loading}
+          currentCity={currentCity}
+        />
+      )}
+
       {!loading && (
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
           <PaginationComponent
