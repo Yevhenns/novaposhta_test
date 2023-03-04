@@ -4,20 +4,20 @@ import PropTypes from 'prop-types';
 export const Info = ({ info }) => {
   return (
     <List>
-      {!info.status ? (
-        <ListItem>Статус: Інформація відсутня</ListItem>
-      ) : (
+      {info.status ? (
         <ListItem>Статус: {info.status}</ListItem>
-      )}
-      {!info.sender ? (
-        <ListItem>Відправив: Інформація відсутня</ListItem>
       ) : (
+        <ListItem>Статус: Інформація відсутня</ListItem>
+      )}
+      {info.sender ? (
         <ListItem>Відправив: {info.sender}</ListItem>
-      )}
-      {!info.recipient ? (
-        <ListItem>Отримав: Інформація відсутня</ListItem>
       ) : (
+        <ListItem>Відправив: Інформація відсутня</ListItem>
+      )}
+      {info.recipient ? (
         <ListItem>Отримав: {info.recipient}</ListItem>
+      ) : (
+        <ListItem>Отримав: Інформація відсутня</ListItem>
       )}
     </List>
   );

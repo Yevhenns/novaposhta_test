@@ -11,7 +11,7 @@ export const Home = () => {
   const [searchParcel, setSearchParcel] = useState(() => {
     return JSON.parse(window.localStorage.getItem('parcels')) ?? [];
   });
-  const [info, setInfo] = useState({});
+  const [info, setInfo] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [inputNumber, setInputNumber] = useState('');
   const [addFormNumber, setAddFormNumber] = useState(false);
