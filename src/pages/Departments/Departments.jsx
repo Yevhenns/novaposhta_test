@@ -34,6 +34,11 @@ export const Departments = () => {
       return;
     }
     getDepartments(optimizedCity).then(data => {
+      if(!data) {
+        toast.error(`Невірна назва населеного пункту!`);
+        setLoading(false);
+        return
+      }
       if (data.length === 0) {
         toast.error(`Невірна назва населеного пункту!`);
         setLoading(false);
